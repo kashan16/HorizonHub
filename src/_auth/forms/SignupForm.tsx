@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 const SignupForm = () => {
-
+  const isLoading = true;
   const form = useForm<z.infer<typeof SignUpValidationSchema>>({
     resolver: zodResolver(SignUpValidationSchema),
     defaultValues: {
@@ -87,7 +87,13 @@ const SignupForm = () => {
             </FormItem>
         )}
       />
-      <Button type="submit">Submit</Button>
+      <Button type="submit" className="shad-button_primary">
+        {isLoading ? (<div className="flex-center gap-2">
+          Loading...
+        </div>) : (<div>
+          Sign Up
+        </div>)}
+      </Button>
       </form>
       </div>
     </Form>
