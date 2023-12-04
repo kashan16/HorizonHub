@@ -2,6 +2,7 @@ import Loader from "@/components/shared/Loader"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { createUserAccount } from "@/lib/appwrite/api"
 import { SignUpValidationSchema } from "@/lib/validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -19,12 +20,9 @@ const SignupForm = () => {
       password : '',
     },
   })
- 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof SignUpValidationSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof SignUpValidationSchema>) {
+    const newUser = await createUserAccount(values);
+    console.log(newUser);
   }
 
   return (
