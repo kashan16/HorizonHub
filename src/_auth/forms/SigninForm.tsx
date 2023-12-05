@@ -29,7 +29,6 @@ const SigninForm = () => {
       <Form {...form}>
         <div className="sm:w-420 flex-center flex-col">
           {/* render the logo here */}<></>
-          <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">Create a new Account</h2>
           <p className="text-light-3 small-medium md:base-regular mt-2">
             Please Enter your details
           </p>
@@ -96,7 +95,7 @@ const SigninForm = () => {
       </Button>
       <p className="text-small-regular text-light-2 text-center mt-2">
         Dont't Have an Account Sign-Up? 
-        <Link to="/sign-up" className="text-primary-500 text-small-semibold ml-1">Log-In</Link>
+        <Link to="/sign-up" className="text-primary-500 text-small-semibold ml-1">Sign-Up</Link>
       </p>
       </form>
       </div>
