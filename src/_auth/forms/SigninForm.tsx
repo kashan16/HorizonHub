@@ -28,7 +28,10 @@ const SigninForm = () => {
   return (
       <Form {...form}>
         <div className="sm:w-420 flex-center flex-col">
-          {/* render the logo here */}<></>
+          {/* render the logo here */}{/* <img
+          src = "/assets/LOGO1.png"
+          alt = "Logo"
+          /> */}
           <p className="text-light-3 small-medium md:base-regular mt-2">
             Please Enter your details
           </p>
