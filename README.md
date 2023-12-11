@@ -56,8 +56,10 @@ npm install
 ```bash
 npm run dev
 ```
+## UI Screenshots
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser to see HorizonHub in action!
+- [Login Page](https://i.postimg.cc/rs3s0Xz7/Screenshot-from-2023-12-11-13-46-12.png)
+- [Sign-Up page](https://i.postimg.cc/XYhRRjmR/Screenshot-from-2023-12-11-13-46-01.png)
 
 ## Contributing
 
