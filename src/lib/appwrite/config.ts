@@ -10,12 +10,10 @@ export const appWriteConfig = {
     savesCollectionId : import.meta.env.VITE_APPWRITE_SAVES_COLLECTION_ID,
 }
 
-export const client = new Client();
-
-client.setProject(appWriteConfig.projectId);
-client.setEndpoint(appWriteConfig.url);
-
+export const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('656c24e47a95bfa91b96');
 export const account = new Account(client);
 export const databases = new Databases(client);
-export const storages = new Storage(client);
+export const storage = new Storage(client);
 export const avatars = new Avatars(client);

@@ -8,27 +8,28 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+
 import { useUserContext } from "@/context/AuthContext";
-import { useSignInAccount } from "@/lib/react-query/queriesAndMutations";
-import { SigninValidationSchema } from "@/lib/validation";
+import { useSignInAccount } from "@/lib/react-query/queries";
+import { SigninValidation } from "@/lib/validation";
 
 const SigninForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { checkAuthUser, isLoading : isUserLoading } = useUserContext();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
   // Query
-  const { mutateAsync: signInAccount, isPending: isSigningInUser } = useSignInAccount();
+  const { mutateAsync: signInAccount, isLoading } = useSignInAccount();
 
-  const form = useForm<z.infer<typeof SigninValidationSchema>>({
-    resolver: zodResolver(SigninValidationSchema),
+  const form = useForm<z.infer<typeof SigninValidation>>({
+    resolver: zodResolver(SigninValidation),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const handleSignin = async (user: z.infer<typeof SigninValidationSchema>) => {
+  const handleSignin = async (user: z.infer<typeof SigninValidation>) => {
     const session = await signInAccount(user);
 
     if (!session) {
@@ -53,13 +54,13 @@ const SigninForm = () => {
   return (
     <Form {...form}>
       <div className="sm:w-420 flex-center flex-col">
-        {/* <img src="/assets/images/logo.svg" alt="logo" /> */}
+        <img src="/assets/images/logo.svg" alt="logo" />
 
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
           Log in to your account
         </h2>
         <p className="text-light-3 small-medium md:base-regular mt-2">
-          Welcome back!! Please enter your details.
+          Welcome back! Please enter your details.
         </p>
         <form
           onSubmit={form.handleSubmit(handleSignin)}
@@ -93,7 +94,7 @@ const SigninForm = () => {
           />
 
           <Button type="submit" className="shad-button_primary">
-            {isSigningInUser || isUserLoading ? (
+            {isLoading || isUserLoading ? (
               <div className="flex-center gap-2">
                 <Loader /> Loading...
               </div>

@@ -9,17 +9,17 @@ export async function createUserAccount ( user :  INewUser ) {
             user.password,
             user.name,
         )
-        if(!account) throw Error;
+        if(!newAccount) throw Error;
         const avatarUrl = avatars.getInitials(user.name);
         const newUser = await saveUserToDB({
             accountID : newAccount.$id,
             name : newAccount.name,
             email : newAccount.email,
             username : user.username,
-            imageUrl : avatarUrl
+            imageUrl : avatarUrl,
         });
 
-        return newUser
+        return newUser;
     }
     catch (error) {
         console.log(error);
@@ -36,8 +36,8 @@ export async function saveUserToDB(user : {
 }) {
     try {
         const newUser = await databases.createDocument(
-            appWriteConfig.databaseId,
-            appWriteConfig.userCollectionId,
+            '657021901a5725d1ea8f',
+            '6570221d3dad3098df51',
             ID.unique(),
             user,
         )
