@@ -59,9 +59,9 @@ npm run dev
 ## UI Screenshots
 
 - Login Page
-  ![Login Page](https://i.postimg.cc/rs3s0Xz7/Screenshot-from-2023-12-11-13-46-12.png)
+  ![Login Page](https://i.postimg.cc/8PSxbqXM/Screenshot-from-2023-12-13-21-16-52.png)
 - Sign-Up page
-  ![Sign-Up page](https://i.postimg.cc/XYhRRjmR/Screenshot-from-2023-12-11-13-46-01.png)
+  ![Sign-Up page](https://i.postimg.cc/kMbdsNJ3/Screenshot-from-2023-12-13-21-15-53.png)
 
 ## Contributing
 
