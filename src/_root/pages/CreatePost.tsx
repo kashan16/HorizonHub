@@ -1,3 +1,4 @@
+import PostForm from "@/components/forms/PostForm"
 
 const CreatePost = () => {
   return (
@@ -13,6 +14,7 @@ const CreatePost = () => {
               Post
             </h2>
         </div>
+        <PostForm/>
       </div>
     </div>
   )
