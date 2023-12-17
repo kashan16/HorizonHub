@@ -63,7 +63,7 @@ npm run dev
 - Sign-Up page
   ![Sign-Up page](https://i.postimg.cc/kMbdsNJ3/Screenshot-from-2023-12-13-21-15-53.png)
 - Navigation 
-  ![Navigation](https://i.postimg.cc/NMp1KLNQ/Screenshot-from-2023-12-17-19-28-39.png)
+  ![Navigation](https://im4.ezgif.com/tmp/ezgif-4-aafa3568bd.webm)
 - Create-Post Page
   ![Create-Post Page](https://i.postimg.cc/rFpfN2Wh/Screenshot-from-2023-12-17-19-24-09.png)
   ![Create-Post Page](https://i.postimg.cc/w3KYLxvG/Screenshot-from-2023-12-17-19-24-20.png)
