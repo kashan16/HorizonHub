@@ -62,8 +62,7 @@ npm run dev
   ![Login Page](https://i.postimg.cc/8PSxbqXM/Screenshot-from-2023-12-13-21-16-52.png)
 - Sign-Up page
   ![Sign-Up page](https://i.postimg.cc/kMbdsNJ3/Screenshot-from-2023-12-13-21-15-53.png)
-- Navigation 
-  ![Navigation](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWU4Mjc0bmk3ZzRzYmRlbHVrOHFjbmNvcGs4NndnaTJxNnJhMjB1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tiC0w1tSK6QaX7k3s5/giphy.gif)
+- Navigation   ![Navigation](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWU4Mjc0bmk3ZzRzYmRlbHVrOHFjbmNvcGs4NndnaTJxNnJhMjB1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tiC0w1tSK6QaX7k3s5/giphy.gif)
 - Create-Post Page
   ![Create-Post Page](https://i.postimg.cc/rFpfN2Wh/Screenshot-from-2023-12-17-19-24-09.png)
   ![Create-Post Page](https://i.postimg.cc/w3KYLxvG/Screenshot-from-2023-12-17-19-24-20.png)
