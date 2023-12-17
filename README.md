@@ -62,6 +62,11 @@ npm run dev
   ![Login Page](https://i.postimg.cc/8PSxbqXM/Screenshot-from-2023-12-13-21-16-52.png)
 - Sign-Up page
   ![Sign-Up page](https://i.postimg.cc/kMbdsNJ3/Screenshot-from-2023-12-13-21-15-53.png)
+- Navigation 
+  ![Navigation](https://i.postimg.cc/NMp1KLNQ/Screenshot-from-2023-12-17-19-28-39.png)
+- Create-Post Page
+  ![Create-Post Page](https://i.postimg.cc/rFpfN2Wh/Screenshot-from-2023-12-17-19-24-09.png)
+  ![Create-Post Page](https://i.postimg.cc/w3KYLxvG/Screenshot-from-2023-12-17-19-24-20.png)
 
 ## Contributing
 
