@@ -1,5 +1,5 @@
 import { deleteSavedPost, savePost } from "@/lib/appwrite/api";
-import { useDeleteSavedPost, useGetCurrentUser, useLikePost, useSavePost } from "@/lib/react-query/queries";
+import { useGetCurrentUser, useLikePost } from "@/lib/react-query/queries";
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite";
 import { useEffect, useState } from "react";
@@ -17,8 +17,8 @@ const PostStats = ( {post , userId} : PostStatsPorp) => {
     const [ isSaved , setIsSaved ] = useState(false);
 
     const { mutate : likePost } = useLikePost();
-    const { mutate : SavePost } = useSavePost();
-    const { mutate : DeleteSavePost } = useDeleteSavedPost();
+/*     const { mutate : SavePost } = useSavePost();
+    const { mutate : DeleteSavePost } = useDeleteSavedPost(); */
     const { data : currentUser } = useGetCurrentUser();
 
     const savedPostRecord = currentUser?.save.find((record : Models.Document) => record.post.$id === post.$id)
