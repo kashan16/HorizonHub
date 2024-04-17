@@ -120,22 +120,21 @@ export async function signOutAccount() {
 // ============================== CREATE POST
 export async function createPost(post: INewPost) {
   try {
-    // Upload file to appwrite storage
     const uploadedFile = await uploadFile(post.file[0]);
 
-    if (!uploadedFile) throw Error;
-
-    // Get file url
-    const fileUrl = getFilePreview(uploadedFile.$id);
-    if (!fileUrl) {
-      await deleteFile(uploadedFile.$id);
-      throw Error;
+    if (!uploadedFile) {
+      throw new Error('File upload failed');
     }
 
-    // Convert tags into array
+    const fileUrl = getFilePreview(uploadedFile.$id);
+
+    if (!fileUrl) {
+      await deleteFile(uploadedFile.$id);
+      throw new Error('Failed to get file preview URL');
+    }
+
     const tags = post.tags?.replace(/ /g, "").split(",") || [];
 
-    // Create post
     const newPost = await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.postCollectionId,
@@ -152,14 +151,17 @@ export async function createPost(post: INewPost) {
 
     if (!newPost) {
       await deleteFile(uploadedFile.$id);
-      throw Error;
+      throw new Error('Failed to create a new post');
     }
 
     return newPost;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    // Handle the error appropriately or rethrow it
+    throw error;
   }
 }
+
 
 // ============================== UPLOAD FILE
 export async function uploadFile(file: File) {

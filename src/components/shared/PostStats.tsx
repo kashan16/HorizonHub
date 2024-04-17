@@ -1,9 +1,8 @@
-import { useUserContext } from "@/context/AuthContext";
 import { deleteSavedPost, savePost } from "@/lib/appwrite/api";
-import { useDeleteSavedPost, useLikePost, useSavePost } from "@/lib/react-query/queries";
+import { useDeleteSavedPost, useGetCurrentUser, useLikePost, useSavePost } from "@/lib/react-query/queries";
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type PostStatsPorp = {
     post : Models.Document;
@@ -20,7 +19,13 @@ const PostStats = ( {post , userId} : PostStatsPorp) => {
     const { mutate : likePost } = useLikePost();
     const { mutate : SavePost } = useSavePost();
     const { mutate : DeleteSavePost } = useDeleteSavedPost();
-    const { data : currentUser } = useUserContext();
+    const { data : currentUser } = useGetCurrentUser();
+
+    const savedPostRecord = currentUser?.save.find((record : Models.Document) => record.post.$id === post.$id)
+
+    useEffect(() => {
+        setIsSaved(!!savedPostRecord)
+    } , [currentUser])
 
     const handleLikePost = ( e : React.MouseEvent ) => {
         e.stopPropagation();
@@ -39,7 +44,6 @@ const PostStats = ( {post , userId} : PostStatsPorp) => {
 
     const handleSavePost = ( e : React.MouseEvent ) => {
         e.stopPropagation();
-        const savedPostRecord = currentUser?.save.find((record : Models.Document) => record.$id === post.$id)
         if(savedPostRecord){
             setIsSaved(false);
             deleteSavedPost(savedPostRecord.$id);
