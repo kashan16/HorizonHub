@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { Button } from "../ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import { useSignOutAccount } from "@/lib/react-query/queries";
-import { Button } from "../ui/button";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -12,14 +12,14 @@ const Topbar = () => {
 
   useEffect(() => {
     if (isSuccess) navigate(0);
-  }, [isSuccess , navigate]);
+  }, [isSuccess]);
 
   return (
     <section className="topbar">
       <div className="flex-between py-4 px-5">
         <Link to="/" className="flex gap-3 items-center">
           <img
-            src="/assets/HH_LOGO1.png"
+            src="/assets/images/logo.svg"
             alt="logo"
             width={130}
             height={325}

@@ -1,18 +1,25 @@
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { useUserContext } from "@/context/AuthContext"
-import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries"
-import { PostValidation } from "@/lib/validation"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Models } from "appwrite"
-import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
-import * as z from "zod"
-import FileUploader from "../shared/FileUploader"
-import Loader from "../shared/Loader"
-import { Input } from "../ui/input"
-import { Textarea } from "../ui/textarea"
-import { useToast } from "../ui/use-toast"
+import * as z from "zod";
+import { Models } from "appwrite";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Button,
+  Input,
+  Textarea,
+} from "@/components/ui";
+import { PostValidation } from "@/lib/validation";
+import { useToast } from "@/components/ui/use-toast";
+import { useUserContext } from "@/context/AuthContext";
+import { FileUploader, Loader } from "@/components/shared";
+import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries";
 
 type PostFormProps = {
   post?: Models.Document;
@@ -34,9 +41,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
   });
 
   // Query
-  const { mutateAsync: createPost, isPending: isLoadingCreate } =
+  const { mutateAsync: createPost, isLoading: isLoadingCreate } =
     useCreatePost();
-  const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
+  const { mutateAsync: updatePost, isLoading: isLoadingUpdate } =
     useUpdatePost();
 
   // Handler

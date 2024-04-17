@@ -1,27 +1,27 @@
-/* Wraps both sign-in and sing-up function */
+import { Outlet, Navigate } from "react-router-dom";
+
 import { useUserContext } from "@/context/AuthContext";
-import { Navigate, Outlet } from "react-router-dom";
 
-const AuthLayout = () => {
-
+export default function AuthLayout() {
   const { isAuthenticated } = useUserContext();
 
   return (
     <>
       {isAuthenticated ? (
-        <Navigate to='/'/>
-      ) : (<>
-      <section className="flex flex-1 justify-center items-center py-10 flex-col">
-        <Outlet/>
-      </section>
-      <img 
-        src="/assets/1.png"
-        alt="logo"
-        className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
-        />
-      </>)}
-    </>
-  )
-}
+        <Navigate to="/" />
+      ) : (
+        <>
+          <section className="flex flex-1 justify-center items-center flex-col py-10">
+            <Outlet />
+          </section>
 
-export default AuthLayout
+          <img
+            src="/assets/images/side-img.svg"
+            alt="logo"
+            className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
+          />
+        </>
+      )}
+    </>
+  );
+}

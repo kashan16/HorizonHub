@@ -1,7 +1,7 @@
 import { ID, Query } from "appwrite";
 
-import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
-import { account, appwriteConfig, avatars, databases, storage } from "./config";
+import { appwriteConfig, account, databases, storage, avatars } from "./config";
+import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
 
 // ============================================================
 // AUTH
@@ -120,21 +120,22 @@ export async function signOutAccount() {
 // ============================== CREATE POST
 export async function createPost(post: INewPost) {
   try {
+    // Upload file to appwrite storage
     const uploadedFile = await uploadFile(post.file[0]);
 
-    if (!uploadedFile) {
-      throw new Error('File upload failed');
-    }
+    if (!uploadedFile) throw Error;
 
+    // Get file url
     const fileUrl = getFilePreview(uploadedFile.$id);
-
     if (!fileUrl) {
       await deleteFile(uploadedFile.$id);
-      throw new Error('Failed to get file preview URL');
+      throw Error;
     }
 
+    // Convert tags into array
     const tags = post.tags?.replace(/ /g, "").split(",") || [];
 
+    // Create post
     const newPost = await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.postCollectionId,
@@ -151,17 +152,14 @@ export async function createPost(post: INewPost) {
 
     if (!newPost) {
       await deleteFile(uploadedFile.$id);
-      throw new Error('Failed to create a new post');
+      throw Error;
     }
 
     return newPost;
   } catch (error) {
-    console.error(error);
-    // Handle the error appropriately or rethrow it
-    throw error;
+    console.log(error);
   }
 }
-
 
 // ============================== UPLOAD FILE
 export async function uploadFile(file: File) {
